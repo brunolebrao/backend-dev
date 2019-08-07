@@ -1,17 +1,20 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const routes = require("./routes");
+const express = require ('express');
+const mongoose = require ('mongoose');
+const cors = require ('cors');
 
-const server = express();
+const routes = require ('./routes');
 
-mongoose.connect(
-  "mongodb+srv://brunolebrao:Enrico-2017@cluster0-qghav.mongodb.net/registerDev?retryWrites=true&w=majority",
+const server = express ();
+
+mongoose.connect (
+  'mongodb+srv://brunolebrao:Enrico-2017@cluster0-qghav.mongodb.net/registerDev?retryWrites=true&w=majority',
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
   }
 );
 
-server.use(express.json());
-server.use(routes);
+server.use (cors ());
+server.use (express.json ());
+server.use (routes);
 
-server.listen(3333);
+server.listen (3333);
